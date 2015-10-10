@@ -2,17 +2,17 @@ IssuesRepo = new Mongo.Collection("IssuesRepo");
 Schemas.Issues = new SimpleSchema({
   orgName: {
     type: String,
-    label: "Organization Name"
+    label: "Organization Name",
     max:200
   },
   repoName: {
     type: String,
-    label: "Repository Name"
+    label: "Repository Name",
     max:200
   },
   closedBy: {
     type: String,
-    label: "Issue was closed by"
+    label: "Issue was closed by",
     max:200
   },
   points: {
@@ -21,7 +21,7 @@ Schemas.Issues = new SimpleSchema({
   },
   githubId: {
     type: String,
-    label: "Gibhub ID"
+    label: "Gibhub ID",
     max: 200
   }
 })
