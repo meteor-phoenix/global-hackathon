@@ -14,7 +14,7 @@ Schemas.Github = new SimpleSchema({
     max:200
   },
   lastPollTimestamp: {
-    type:Boolean
+    type:Boolean,
     label: "Time Events Last Polled" 
   }
 })
