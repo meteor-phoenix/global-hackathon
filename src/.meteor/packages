@@ -20,3 +20,5 @@ autopublish             # Publish all data to the clients (for prototyping)
 insecure                # Allow all DB writes from clients (for prototyping)
 bruz:github-api
 idmontie:migrations
+kadira:flow-router
+kadira:react-layout
