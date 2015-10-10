@@ -5,12 +5,12 @@ Schemas = {}
 Schemas.Github = new SimpleSchema({
   orgName: {
     type: String,
-    label: "Organization Name"
+    label: "Organization Name",
     max:200
   },
   repoName: {
     type: String,
-    label: "Repository Name"
+    label: "Repository Name",
     max:200
   },
   lastPollTimestamp: {
