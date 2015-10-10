@@ -21,4 +21,3 @@ Schemas.Github = new SimpleSchema({
 
 GithubRepo.attachSchema(Shemas.Github)
 
-obj = {orgName: "meteor-phoenix", repoName: "global-hackathon"};
