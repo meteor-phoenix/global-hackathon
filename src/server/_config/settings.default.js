@@ -1,0 +1,6 @@
+Settings = {
+  github: {
+    key: "",
+    secret: ""
+  }
+};
