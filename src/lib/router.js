@@ -1,10 +1,10 @@
-FlowRouter.route('/:org_name/:repo_name', {
+FlowRouter.route('/', {
     // do some action for this route
     action: function(params, queryParams) {
       console.log("Params:", params);
       console.log("Query Params:", queryParams);
-      BlazeLayout.render("mainLayout", {area: "blog"});
+      ReactLayout.render("mainLayout");
     },
 
-    name: "Testing this route" // optional
+    name: "Main Layout" // optional
 });
