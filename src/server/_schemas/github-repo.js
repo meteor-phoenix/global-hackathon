@@ -1,6 +1,6 @@
-GithubRepo = new Mongo.Collection("GithubRepo");
+GithubRepos = new Mongo.Collection("GithubRepos");
 
-GithubRepo.attachSchema(
+GithubRepos.attachSchema(
   new SimpleSchema({
     orgName: {
       type: String,
@@ -13,7 +13,7 @@ GithubRepo.attachSchema(
       max:200
     },
     lastPollTimestamp: {
-      type: 'String|Boolean',
+      type: Number,
       label: "Time Events Last Polled" 
     }
   })
