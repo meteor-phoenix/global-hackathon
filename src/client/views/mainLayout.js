@@ -3,7 +3,7 @@ MainLayout = React.createClass({
     return <div>
       <header>
         <h1>Welcome to the Github Gamified Issue Tracker</h1>
-        <p>We make fixing issues in Github FUN!</p>
+        <p>Fix some issues and get sweet points</p>
       </header>
       <main>
         Content goes here
