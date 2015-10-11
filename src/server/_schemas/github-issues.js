@@ -13,9 +13,13 @@ GithubIssues.attachSchema(
       max:200
     },
     closedBy: {
-      type: 'String|Boolean',
+      type: "String|Boolean",
       label: "Issue was closed by",
       max:200
+    },
+    title: {
+      type: String,
+      label: "Title of the issue"
     },
     points: {
       type: Number,

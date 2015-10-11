@@ -41,6 +41,7 @@ function getIssues( github, repo ) {
           closedBy: false,
           points: 0,
           number: issue.number,
+          title: issue.title,
           isPullRequest: issue.pull_request ? true : false
         } );
 
@@ -90,7 +91,7 @@ function getEventsForIssue( github, repo, githubIssue ) {
 function updateRepoPoll( repo ) {
   // Update the repo with the latest timestamp
   repo.lastPollTimestamp = +new Date();
-  GithubRepo.update( repo._id, {
+  GithubRepos.update( repo._id, {
     $set : {
       lastPollTimestamp : repo.lastPollTimestamp
     }
@@ -99,7 +100,7 @@ function updateRepoPoll( repo ) {
 
 function GithubJob () {
   // Get ALL projects
-  var repos = GithubRepo.find({}).fetch();
+  var repos = GithubRepos.find({}).fetch();
 
   for ( var i = 0; i < repos.length; i++ ) {
     var repo = repos[i];

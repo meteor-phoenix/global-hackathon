@@ -1,6 +1,6 @@
-GithubRepo = new Mongo.Collection("GithubRepo");
+GithubRepos = new Mongo.Collection("GithubRepos");
 
-GithubRepo.attachSchema(
+GithubRepos.attachSchema(
   new SimpleSchema({
     orgName: {
       type: String,
