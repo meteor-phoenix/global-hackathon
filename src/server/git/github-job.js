@@ -112,5 +112,6 @@ function GithubJob () {
 // Run once
 GithubJob();
 
-//
+// TODO use a priority queue and work through the job queue
+// prioritizing active repos and refresh requests
 Meteor.setInterval( GithubJob, 5 * 60 * 1000 /* 5 minutes */ );
