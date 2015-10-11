@@ -9,5 +9,5 @@ This project aims to create a package which allows other projects to be gamified
 * Dan Peterson
 
 ## Documentation
-
-* Uses a github-api package that uses[node-github](https://github.com/mikedeboer/node-github). [See the full documentation here](http://mikedeboer.github.io/node-github/#issues.prototype.repoIssues).
+gg
+* Uses a github-api package that uses[node-github](https://github.com/mikedeboer/node-github). [See the full documentation here](http://mikedeboer.github.io/node-github/#issues.prototype.repoIssues). For example JSON results, see [the Github documentation](https://developer.github.com/v3/issues/#list-issues-for-a-repository).
