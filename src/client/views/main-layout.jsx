@@ -14,3 +14,5 @@ MainLayout = React.createClass({
     </div>
   }
 });
+
+console.log( 'test' );
