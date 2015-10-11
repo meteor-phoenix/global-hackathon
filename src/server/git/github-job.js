@@ -17,25 +17,36 @@ github.authenticate({
 })
 
 function getIssues( github, repo ) {
-  console.log( repo );
-    github.issues.repoIssues({
+  try {
+    var result = github.issues.repoIssues({
       user: repo.orgName,
       repo: repo.repoName,
       state: 'all'
-    }, function ( error, message ) {
-      if ( ! error ) {
-        console.log( message );
-      } else {
-        console.log( 'error', e );
-      }
-    } );
+    });
 
     // Foreach issue in res
+    for ( var i = 0; i < result.length; i++ ) {
+      var issue = result[i];
 
-    // Check if we have the issue
-    
-    // If we do not, add the issue to the database
+      var githubIssue = GithubIssues.findOne( {
+        orgName: repo.orgName,
+        repoName: repo.repoName,
+        githubId: issue.id
+      } );
 
+      if ( githubIssue === null ) {
+        GithubIssues.insert( {
+          orgName: repo.orgName,
+          repoName: repo.repoName,
+          closedBy: false,
+          points: 0,
+          githubId: issue.id
+        } );
+      }
+    }
+  } catch ( e ) {
+    console.log( e );
+  }
 }
 
 
