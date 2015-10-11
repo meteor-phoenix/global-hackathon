@@ -3,7 +3,7 @@ FlowRouter.route('/', {
     action: function(params, queryParams) {
       console.log("Params:", params);
       console.log("Query Params:", queryParams);
-      ReactLayout.render("mainLayout");
+      ReactLayout.render("MainLayout");
     },
 
     name: "Main Layout" // optional
