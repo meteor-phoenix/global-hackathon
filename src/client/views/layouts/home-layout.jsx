@@ -6,7 +6,7 @@ MainLayout = React.createClass({
         <p>Fix some issues and get sweet points</p>
       </header>
       <main>
-        Content goes here
+        Content Goes Here
       </main>
       <footer>
         Made by Meteor Phoenix <a href="http://github.com/meteor-phoenix/global-hackathon">View on Github</a>
@@ -14,5 +14,3 @@ MainLayout = React.createClass({
     </div>
   }
 });
-
-console.log( 'test' );
