@@ -1,4 +1,4 @@
-MainLayout = React.createClass({
+HomeLayout = React.createClass({
   render() {
     return <div>
       <header>
