@@ -13,7 +13,7 @@ GithubIssues.attachSchema(
       max:200
     },
     closedBy: {
-      type: String,
+      type: 'String|Boolean',
       label: "Issue was closed by",
       max:200
     },
@@ -21,10 +21,14 @@ GithubIssues.attachSchema(
       type: Number,
       label: "Number of points issue is worth"
     },
-    githubId: {
+    number: {
       type: String,
-      label: "Gibhub ID",
+      label: "Github Issue Number",
       max: 200
+    },
+    isPullRequest : {
+      type: Boolean,
+      label: "Whether this issue is a pull request"
     }
   })
 );

@@ -31,16 +31,54 @@ function getIssues( github, repo ) {
       var githubIssue = GithubIssues.findOne( {
         orgName: repo.orgName,
         repoName: repo.repoName,
-        githubId: issue.id
+        number: "" + issue.number
       } );
 
-      if ( githubIssue === null ) {
-        GithubIssues.insert( {
+      if ( githubIssue == null ) {
+        var id = GithubIssues.insert( {
           orgName: repo.orgName,
           repoName: repo.repoName,
           closedBy: false,
           points: 0,
-          githubId: issue.id
+          number: issue.number,
+          isPullRequest: issue.pull_request ? true : false
+        } );
+
+        githubIssue = GithubIssues.findOne( {
+          _id: id
+        } );
+      }
+
+      getEventsForIssue( github, repo, githubIssue );
+    }
+  } catch ( e ) {
+    console.log( e );
+  }
+}
+
+function getEventsForIssue( github, repo, githubIssue ) {
+  try {
+    var result = github.issues.getEvents({
+      header : {
+        'If-Modified-Since': repo.lastPollTimeStamp
+      },
+      user: repo.orgName,
+      repo: repo.repoName,
+      number: githubIssue.number
+    });
+
+    // TODO we only really care about closed events
+    // for now 
+    for ( var i = 0; i < result.length; i++ ) {
+      var githubEvent = result[i];
+      // update with is closed and who closed it
+      if ( githubEvent.event === 'closed' ) {
+        githubIssue.closedBy = githubEvent.actor.login;
+
+        GithubIssues.update( githubIssue._id, {
+          $set : {
+            closedBy: githubIssue.closedBy
+          }
         } );
       }
     }
@@ -49,29 +87,14 @@ function getIssues( github, repo ) {
   }
 }
 
-
-function getEvents( github, repo ) {
-  try {
-    var result = github.issues.getEvents({
-      header : {
-        'If-Modified-Since': repo.lastPollTimeStamp
-      },
-      user: repo.orgName,
-      repo: repo.repoName,
-      number: 100
-    });
-
-    // Foreach event is res
-
-    // Send an event off that an issue was closed
-    console.log(result);
-
-    // Update the repo with the latest timestamp
-    repo.lastPollTimeStamp = +new Date();
-    GithubRepo.update( repo._id, repo );
-  } catch ( e ) {
-    console.log( e );
-  }
+function updateRepoPoll( repo ) {
+  // Update the repo with the latest timestamp
+  repo.lastPollTimestamp = +new Date();
+  GithubRepo.update( repo._id, {
+    $set : {
+      lastPollTimestamp : repo.lastPollTimestamp
+    }
+  } );
 }
 
 function GithubJob () {
@@ -82,11 +105,12 @@ function GithubJob () {
     var repo = repos[i];
 
     getIssues( github, repo );
-    //getEvents( github, repo );
+    updateRepoPoll( repo );
   }
 }
 
 // Run once
 GithubJob();
 
-Meteor.setInterval( GithubJob, 60 * 1000 /* 1 minute */ );
+//
+Meteor.setInterval( GithubJob, 5 * 60 * 1000 /* 5 minutes */ );

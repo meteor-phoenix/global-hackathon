@@ -13,7 +13,7 @@ GithubRepo.attachSchema(
       max:200
     },
     lastPollTimestamp: {
-      type: 'String|Boolean',
+      type: Number,
       label: "Time Events Last Polled" 
     }
   })
