@@ -4,6 +4,8 @@
  * For each github organization, ask for the latest issues
  * and then run a diff between the changes. For those changes,
  * run any necessary events.
+ *
+ * TODO look into Github hooks: https://developer.github.com/v3/repos/hooks/
  */
 
 var github = new GitHub({
