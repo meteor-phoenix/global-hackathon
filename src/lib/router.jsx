@@ -21,7 +21,7 @@ FlowRouter.route('/:orgName/:repoName', {
     ReactLayout.render(MainLayout, {
       orgName: params.orgName,
       repoName: params.repoName,
-      content: <NestedLayout />
+      content: <NestedLayout orgName={params.orgName} repoName={params.repoName} />
     });
   },
   name: "Issue Layout"

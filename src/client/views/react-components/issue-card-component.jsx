@@ -1,7 +1,42 @@
 IssueCardComponent = React.createClass({
+  mixins: [ReactMeteorData],
+  getMeteorData() {
+    var handleUserVotes  = Meteor.subscribe("userVotes");
+
+    return {
+      listLoading: ! handleUserVotes.ready(),
+      vote: UserVotes.findOne({
+        orgName: this.props.issue.orgName,
+        repoName: this.props.issue.repoName,
+        number: this.props.issue.number
+      })
+    };
+  },
+  voteClick( e ) {
+    e.preventDefault();
+    // TODO unvote if already voted
+    // TODO handle error
+
+    if ( this.data.vote ) {
+      var result = Meteor.call(
+        'uncastVote',
+        this.props.issue.orgName,
+        this.props.issue.repoName,
+        this.props.issue.number
+      );
+    } else {
+      var result = Meteor.call(
+        'castVote',
+        this.props.issue.orgName,
+        this.props.issue.repoName,
+        this.props.issue.number
+      );
+    }
+  },
   render() {
     var closedBy;
     var panelClass = "panel";
+    var voteClass  = "fa fa-circle fa-stack-2x";
     var githubLink = "https://github.com/";
     githubLink += this.props.issue.orgName;
     githubLink += '/';
@@ -20,6 +55,15 @@ IssueCardComponent = React.createClass({
       panelClass += " panel-info";
     }
 
+    /*
+     * Different look for whether the vote has been cast or not
+     */
+    if (this.data.vote) {
+      voteClass += " text-primary";
+    } else {
+      voteClass += " text-muted";
+    }
+
     return <div className={panelClass} key={this.props.key}>
       <div className="panel-heading">
         <span className="pull-right">{closedBy}</span>
@@ -29,8 +73,8 @@ IssueCardComponent = React.createClass({
         <div className="fluid-container">
           <div className="row">
             <div className="col-xs-3">
-              <a className="fa-stack fa-lg" href="#">
-                <i className="fa fa-circle fa-stack-2x text-primary"></i>
+              <a className="fa-stack fa-lg" href="#" onClick={this.voteClick}>
+                <i className={voteClass}></i>
                 <i className="fa fa-caret-up fa-stack-1x fa-inverse"></i>
               </a>
               &nbsp;
