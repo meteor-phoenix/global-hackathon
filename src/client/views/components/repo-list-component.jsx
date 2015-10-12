@@ -1,7 +1,7 @@
 RepoListComponent = React.createClass({
   render() {
     return <div>
-      Repo List
+      <h3>Repos</h3>
 
       <div className="list-group">
         {this.props.repos.map(function(repo, i){

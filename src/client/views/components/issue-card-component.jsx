@@ -26,15 +26,18 @@ IssueCardComponent = React.createClass({
         <h3 className="panel-title">{this.props.issue.title}</h3>
       </div>
       <div className="panel-body">
-        <a href={githubLink} className="btn btn-default">View Issue On Github</a>
+        <a href={githubLink} className="btn btn-default" target="blank">
+          View Issue On Github&nbsp;
+          <i className="fa fa-external-link"></i>
+        </a>
 
         <span className="pull-right">
           {this.props.issue.points} Exp
           &nbsp;
-          <span className="fa-stack fa-lg">
+          <a className="fa-stack fa-lg" href="#">
             <i className="fa fa-circle fa-stack-2x text-primary"></i>
             <i className="fa fa-caret-up fa-stack-1x fa-inverse"></i>
-          </span>
+          </a>
         </span>
       </div>
     </div>
