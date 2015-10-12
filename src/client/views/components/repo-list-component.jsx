@@ -1,4 +1,4 @@
-RepoListLayout = React.createClass({
+RepoListComponent = React.createClass({
   render() {
     return <div>
       Repo List

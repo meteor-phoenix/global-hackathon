@@ -54,10 +54,9 @@ GithubIssues.allow({
 if ( Meteor.isServer ) {
   // TODO define any views here
 
-  Meteor.publish( 'githubIssues', function () {
+  Meteor.publish( 'githubIssues', function (orgName, repoName) {
     'use strict';
 
-    // TODO paginate
     return GithubIssues.find({});
   } );
 }

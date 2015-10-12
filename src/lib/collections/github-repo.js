@@ -18,12 +18,6 @@ GithubRepo.prototype = {
       closedBy: false
     });
 
-    console.log( {
-      orgName: this.orgName,
-      repoName: this.repoName,
-      closedBy: false
-    } );
-
     return issues.count();
   }
 };
