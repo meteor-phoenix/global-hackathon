@@ -57,45 +57,56 @@ function defaultCheck(orgName, repoName, number) {
   }
 
   // TODO also check that the issue has not already been closed
+  var issue = GithubIssues.findOne({
+    orgName: orgName,
+    repoName: repoName,
+    number: number
+  });
+
+  var alreadyClosed = !( issue.closedBy === false );
+
+  if ( alreadyClosed ) {
+    return false;
+  }
 
   return true;
 }
 
 Meteor.methods({
   castVote: function (orgName, repoName, number) {
-    defaultCheck(orgName, repoName, number);
+    if ( defaultCheck(orgName, repoName, number) ) {
+      var username = Meteor.user().services.github.username;
 
-    var username = Meteor.user().services.github.username;
+      // The user has NOT cast a vote for that issue before
+      var vote = UserVotes.findOne({
+        orgName: orgName,
+        repoName: repoName,
+        number: number,
+        username: username
+      });
 
-    // The user has NOT cast a vote for that issue before
-    var vote = UserVotes.findOne({
-      orgName: orgName,
-      repoName: repoName,
-      number: number,
-      username: username
-    });
-
-    if ( vote == null ) {
-      return castVoteHelper(orgName, repoName, number, username);  
+      if ( vote == null ) {
+        return castVoteHelper(orgName, repoName, number, username);  
+      }
     }
 
     return false;
   },
   uncastVote: function (orgName, repoName, number) {
-    defaultCheck(orgName, repoName, number);
+    if ( defaultCheck(orgName, repoName, number) ) {
+      var username = Meteor.user().services.github.username;
 
-    var username = Meteor.user().services.github.username;
+      // The user has cast a vote for that issue before
+      var vote = UserVotes.findOne({
+        orgName: orgName,
+        repoName: repoName,
+        number: number,
+        username: username
+      });
 
-    // The user has cast a vote for that issue before
-    var vote = UserVotes.findOne({
-      orgName: orgName,
-      repoName: repoName,
-      number: number,
-      username: username
-    });
-
-    if ( vote != null ) {
-      return uncastVoteHelper(orgName, repoName, number, username);  
+      if ( vote != null ) {
+        return uncastVoteHelper(orgName, repoName, number, username);  
+      }
     }
 
     return false;
