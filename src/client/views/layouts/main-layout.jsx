@@ -10,6 +10,10 @@ MainLayout = React.createClass({
       issues: GithubIssues.find({
         orgName: this.props.orgName,
         repoName: this.props.repoName,
+      }, {
+        sort: {
+          closedBy: -1
+        }
       }).fetch()
     };
   },
@@ -23,10 +27,18 @@ MainLayout = React.createClass({
         Menu
       </header>
       <main>
-        <RepoListComponent
-          repos={this.data.repos}/>
-        <IssueListComponent
-          issues={this.data.issues}/>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-3">
+              <RepoListComponent
+                repos={this.data.repos}/>
+            </div>
+            <div className="col-md-9">
+              <IssueListComponent
+                issues={this.data.issues}/>
+            </div>
+          </div>
+        </div>
       </main>
       <footer>
         Made by Meteor Phoenix <a href="http://github.com/meteor-phoenix/global-hackathon">View on Github</a>

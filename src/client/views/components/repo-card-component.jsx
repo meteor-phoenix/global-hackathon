@@ -1,10 +1,15 @@
 RepoCardComponent = React.createClass({
   render() {
-    return <div key={this.props.key}>
-      {this.props.repo.orgName}&nbsp;/&nbsp;
-      {this.props.repo.repoName}
-
-      {this.props.repo.getNumberOfIssues()} Issues Open
-    </div>
+    return <a
+        href="/{this.props.repo.orgName}/{this.props.repo.repoName}"
+        className="list-group-item" key={this.props.key}>
+      <h4 className="list-group-item-heading">
+        {this.props.repo.orgName}&nbsp;/&nbsp;
+        {this.props.repo.repoName}
+      </h4>
+      <p class="list-group-item-text">
+        {this.props.repo.getNumberOfIssues()} Issues Open
+      </p>
+    </a>
   }
 });

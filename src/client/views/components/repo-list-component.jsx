@@ -3,7 +3,7 @@ RepoListComponent = React.createClass({
     return <div>
       Repo List
 
-      <div>
+      <div className="list-group">
         {this.props.repos.map(function(repo, i){
           return <RepoCardComponent repo={repo} key={i} />;
         })}

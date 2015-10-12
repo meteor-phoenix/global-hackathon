@@ -3,7 +3,7 @@ IssueListComponent = React.createClass({
     return <div>
       Issue List
 
-      <div>
+      <div className="list-group">
         {this.props.issues.map(function(issue, i){
           return <IssueCardComponent issue={issue} key={i} />;
         })}
