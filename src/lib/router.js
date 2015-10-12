@@ -1,23 +1,18 @@
 FlowRouter.route('/', {
-    // do some action for this route
-    action: function(params, queryParams) {
-      console.log("Params:", params);
-      console.log("Query Params:", queryParams);
-      ReactLayout.render(MainLayout);
-    },
-
-    name: "Main Layout" // optional
+  action: function(params, queryParams) {
+    console.log("Params:", params);
+    console.log("Query Params:", queryParams);
+    ReactLayout.render(HomeLayout);
+  },
+  name: "Home Layout"
 });
 
-
-// FlowRouter.route("/", {
-//   subscriptions: function() {
-//     var selector = {category: {$ne: "private"}};
-//     this.register('posts', Meteor.subscribe('posts', selector));
-//   },
-//   action: function() {
-//     ReactLayout.render(BlogLayout, {
-//       content: <PostList />
-//     });
-//   }
-// });
+FlowRouter.route('/:orgName/:repoName', {
+  action: function(params, queryParams) {
+    ReactLayout.render(MainLayout, {
+      orgName: params.orgName,
+      repoName: params.repoName
+    });
+  },
+  name: "Issue Layout"
+});

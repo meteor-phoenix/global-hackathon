@@ -37,3 +37,26 @@ GithubIssues.attachSchema(
   })
 );
 
+
+GithubIssues.allow({
+  insert: function () {
+    return false;
+  },
+  update: function () {
+    return false;
+  }
+});
+
+
+// ==================
+// Publish Properties
+// ==================
+if ( Meteor.isServer ) {
+  // TODO define any views here
+
+  Meteor.publish( 'githubIssues', function (orgName, repoName) {
+    'use strict';
+
+    return GithubIssues.find({});
+  } );
+}
