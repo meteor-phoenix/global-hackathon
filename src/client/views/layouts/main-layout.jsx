@@ -35,6 +35,7 @@ MainLayout = React.createClass({
             </div>
             <div className="col-md-9">
               <IssueListComponent
+                repoName={this.props.repoName}
                 issues={this.data.issues}/>
             </div>
           </div>
