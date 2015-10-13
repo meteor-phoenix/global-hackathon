@@ -1,6 +1,6 @@
-GithubIssues = new Mongo.Collection("GithubIssues");
+UserVotes = new Mongo.Collection("UserVotes");
 
-GithubIssues.attachSchema(
+UserVotes.attachSchema(
   new SimpleSchema({
     orgName: {
       type: String,
@@ -12,33 +12,21 @@ GithubIssues.attachSchema(
       label: "Repository Name",
       max:200
     },
-    closedBy: {
-      type: "String|Boolean",
-      label: "Issue was closed by",
-      max:200
-    },
-    title: {
-      type: String,
-      label: "Title of the issue"
-    },
-    points: {
-      type: Number,
-      label: "Number of points issue is worth"
-    },
     number: {
       type: String,
       label: "Github Issue Number",
       max: 200
     },
-    isPullRequest : {
-      type: Boolean,
-      label: "Whether this issue is a pull request"
+    username: {
+      type: String,
+      label: "Github User Name",
+      max: 200
     }
   })
 );
 
 
-GithubIssues.allow({
+UserVotes.allow({
   insert: function () {
     return false;
   },
@@ -54,10 +42,20 @@ GithubIssues.allow({
 if ( Meteor.isServer ) {
   // TODO define any views here
 
-  Meteor.publish( 'githubIssues', function (orgName, repoName) {
+  Meteor.publish( 'userVotes', function () {
     'use strict';
 
+    if (! this.userId) {
+      return;
+    }
+
+    var user = Meteor.users.findOne(this.userId);
+
+    var username = user.services.github.username;
+
     // TODO paginate
-    return GithubIssues.find({});
+    return UserVotes.find({
+      username: username
+    });
   } );
 }

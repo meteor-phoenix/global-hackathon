@@ -14,24 +14,13 @@ HomeLayout = React.createClass({
       return <AppLoadingComponent />;
     }
 
-    return <div>
-      <header>
-        <h1>Welcome to the Github Gamified Issue Tracker</h1>
-        <p>Fix some issues and get sweet points</p>
-      </header>
-      <main>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-offset-3 col-md-6">
-              <RepoListComponent
-                repos={this.data.repos}/>
-            </div>
-          </div>
+    return <div className="container">
+      <div className="row">
+        <div className="col-md-offset-3 col-md-6">
+          <RepoListComponent
+            repos={this.data.repos}/>
         </div>
-      </main>
-      <footer>
-        Made by Meteor Phoenix <a href="http://github.com/meteor-phoenix/global-hackathon">View on Github</a>
-      </footer>
+      </div>
     </div>
   }
 });
