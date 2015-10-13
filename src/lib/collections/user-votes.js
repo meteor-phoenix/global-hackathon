@@ -58,4 +58,13 @@ if ( Meteor.isServer ) {
       username: username
     });
   } );
+
+  Meteor.publish( 'userVotesByName', function (username) {
+    'use strict';
+
+    // TODO paginate
+    return UserVotes.find({
+      username: username
+    });
+  } );
 }

@@ -75,7 +75,9 @@ function getEventsForIssue( github, repo, githubIssue ) {
     for ( var i = 0; i < result.length; i++ ) {
       var githubEvent = result[i];
       // update with is closed and who closed it
-      if ( githubEvent.event === 'closed' ) {
+      if ( githubEvent.event === 'closed' &&
+           githubIssue.closedBy != githubEvent.actor.login ) {
+
         githubIssue.closedBy = githubEvent.actor.login;
 
         GithubIssues.update( githubIssue._id, {
@@ -83,6 +85,21 @@ function getEventsForIssue( github, repo, githubIssue ) {
             closedBy: githubIssue.closedBy
           }
         } );
+
+        // Award the points for the issue to the user that closed it
+        if ( githubIssue.points > 0 ) {
+          UserPoints.insert({
+            username: githubEvent.actor.login,
+            message: "+" + githubIssue.points + " EXP collected from \"" + githubIssue.title + "\"",
+            points: githubIssue.points
+          });
+        }
+
+        UserPoints.insert({
+          username: githubEvent.actor.login,
+          message: "+10 EXP for closing \"" + githubIssue.title + "\"",
+          points: 10
+        });
       }
     }
   } catch ( e ) {
