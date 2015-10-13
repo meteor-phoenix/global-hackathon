@@ -56,7 +56,7 @@ function defaultCheck(orgName, repoName, number) {
     throw new Meteor.Error("not-logged-in", "Must be logged in to post a comment.");
   }
 
-  // TODO also check that the issue has not already been closed
+  // also check that the issue has not already been closed
   var issue = GithubIssues.findOne({
     orgName: orgName,
     repoName: repoName,

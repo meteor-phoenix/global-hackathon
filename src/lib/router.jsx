@@ -4,16 +4,18 @@ FlowRouter.route('/', {
       content: <HomeLayout />
     });
   },
-  name: "Home Layout"
+  name: "Home"
 });
 
-FlowRouter.route('/login', {
-  action: function (params, queryParams) {
+FlowRouter.route('/:username', {
+  action: function(params, queryParams) {
     ReactLayout.render(MainLayout, {
-      content: <LoginLayout />
+      orgName: params.orgName,
+      repoName: params.repoName,
+      content: <UserLayout username={params.username} />
     });
   },
-  name: "Login Layout"
+  name: "User Profile"
 });
 
 FlowRouter.route('/:orgName/:repoName', {
@@ -24,5 +26,5 @@ FlowRouter.route('/:orgName/:repoName', {
       content: <NestedLayout orgName={params.orgName} repoName={params.repoName} />
     });
   },
-  name: "Issue Layout"
+  name: "Issues"
 });

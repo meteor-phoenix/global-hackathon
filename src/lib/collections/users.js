@@ -3,3 +3,19 @@ Meteor.users.deny({
     return true;
   }
 });
+
+if ( Meteor.isServer ) {
+  /**
+   * Publish everyone's github id
+   *
+   * Careful! DON'T ACCIDENTLY EXPOSE
+   * SECRET PROPERTIES
+   */
+  Meteor.publish(null, function() {
+    return Meteor.users.find({}, {
+      fields: {
+        'services.github.username': 1
+      }
+    });
+  });  
+}
