@@ -43,6 +43,16 @@ IssueCardComponent = React.createClass({
     githubLink += this.props.issue.repoName;
     githubLink += '/issues/';
     githubLink += this.props.issue.number;
+    var bountyLink = '';
+
+    // TODO check if user has at least 50 points to add a bounty
+    if ( true && this.props.issue.closedBy === false ) {
+      bountyLink = (
+          <a href="#" className="btn btn-success">
+            Add a Bounty
+          </a>
+      );
+    }
 
     /*
      * Different look and text whether the issue is closed or not
@@ -83,6 +93,7 @@ IssueCardComponent = React.createClass({
               {this.props.issue.points} Exp
             </div>
             <div className="col-xm-9">
+              {bountyLink}
               <a href={githubLink} className="btn btn-default" target="blank">
                 View Issue On Github&nbsp;
                 <i className="fa fa-external-link"></i>
