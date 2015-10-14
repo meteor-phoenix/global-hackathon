@@ -67,7 +67,9 @@ IssueCardComponent = React.createClass({
     return <div className={panelClass} key={this.props.key}>
       <div className="panel-heading">
         <span className="pull-right">{closedBy}</span>
-        <h3 className="panel-title">{this.props.issue.title}</h3>
+        <h3 className="panel-title">
+          #{this.props.issue.number} &nbsp; 
+          {this.props.issue.title}</h3>
       </div>
       <div className="panel-body">
         <div className="fluid-container">
