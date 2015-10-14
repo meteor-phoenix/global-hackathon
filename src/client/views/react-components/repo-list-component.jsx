@@ -1,8 +1,27 @@
 RepoListComponent = React.createClass({
   newClick(e) {
     e.preventDefault();
-    // TODO
     $('#createRepo').modal('show');
+  },
+  createClick(e) {
+    e.preventDefault();
+
+    var $input = $('#createRepo input[name=createRepoName]');
+    var $label = $('#createRepo label[for=createRepoName]');
+    var repo = $input.val();
+
+    // Reset the form
+    $input.closest( 'form' ).removeClass( 'has-error' );
+    $label.text('');
+
+    Meteor.call( 'createRepo', repo, function ( err, msg ) {
+      if ( err ) {
+        $input.closest( 'form' ).addClass( 'has-error' );
+        $label.text( err.reason ); 
+      } else {
+        $('#createRepo').modal('hide');
+      }
+    });
   },
   render() {
     var addRepoButton = '';
@@ -25,14 +44,23 @@ RepoListComponent = React.createClass({
               </div>
               <div className="modal-body">
                 <form>
-                  <div class="form-group">
-                    <input type="text" className="form-control" id="createRepoName" placeholder="my-org-or-user-name/my-repo-name"/>
+                  <div className="form-group">
+                    <label
+                        className="control-label"
+                        htmlFor="createRepoName">
+                    </label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="createRepoName"
+                        name="createRepoName"
+                        placeholder="my-org-or-user-name/my-repo-name"/>
                   </div>
                 </form>
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary">Add Repo</button>
+                <button type="button" className="btn btn-primary" onClick={this.createClick}>Add Repo</button>
               </div>
             </div>
           </div>
