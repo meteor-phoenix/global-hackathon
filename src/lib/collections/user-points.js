@@ -28,7 +28,7 @@ UserPoints.attachSchema(
           this.unset();  // Prevent user from supplying their own value
         }
       }
-    },
+    }
   })
 );
 
