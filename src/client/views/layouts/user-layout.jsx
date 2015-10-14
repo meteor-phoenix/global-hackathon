@@ -15,9 +15,11 @@ UserLayout = React.createClass({
     var totalPoints = 0;
 
     if ( points.length > 0 ) {
-      totalPoints = points.reduce( function ( a, b ) {
-        return a.points + b.points;
-      } );
+      totalPoints = points.map(function ( a ) {
+        return a.points;
+      } ).reduce(function ( a, b ) {
+        return a + b;
+      });
     }
 
     return {

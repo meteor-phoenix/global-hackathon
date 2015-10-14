@@ -14,8 +14,10 @@ LoginLayout = React.createClass({
     var points = 0;
 
     if ( pointEntries.length > 0 ) {
-      points = pointEntries.reduce(function ( a, b ) {
-        return a.points + b.points;
+      points = pointEntries.map(function ( a ) {
+        return a.points;
+      } ).reduce(function ( a, b ) {
+        return a + b;
       });
     }
 
