@@ -6,7 +6,12 @@ HomeLayout = React.createClass({
 
     return {
       listLoading: ! handleIssues.ready() && ! handleRepos.ready(),
-      repos: GithubRepos.find().fetch()
+      repos: GithubRepos.find({}, {
+        sort: {
+          lastPollTimestamp: -1,
+          createdAt: -1
+        }
+      }).fetch()
     };
   },
   render() {

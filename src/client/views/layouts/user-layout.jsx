@@ -10,6 +10,10 @@ UserLayout = React.createClass({
 
     var points = UserPoints.find({
       username: this.props.username
+    }, {
+      sort: {
+        createdAt: -1  
+      }
     }).fetch();
 
     var totalPoints = 0;
