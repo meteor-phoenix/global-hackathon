@@ -4,10 +4,6 @@ UserLayout = React.createClass({
     var handleUsers      = Meteor.subscribe("users");
     var handleUserPoints = Meteor.subscribe("userPointsByName", this.props.username);
 
-    var user = Meteor.users.findOne({
-      'services.github.username': this.props.username
-    });
-
     var points = UserPoints.find({
       username: this.props.username
     }, {
@@ -27,7 +23,6 @@ UserLayout = React.createClass({
     }
 
     return {
-      user: user,
       points: points,
       totalPoints: totalPoints
     }
@@ -38,7 +33,7 @@ UserLayout = React.createClass({
         <div className="col-md-offset-3 col-md-6">
           <div className="panel panel-default">
             <div className="panel-heading">
-              <h3 className="panel-title">{this.data.user.services.github.username}</h3>
+              <h3 className="panel-title">{this.props.username}</h3>
             </div>
             <div className="panel-body">
               <p>Total EXP: <span className="label label-primary">{this.data.totalPoints}</span></p>

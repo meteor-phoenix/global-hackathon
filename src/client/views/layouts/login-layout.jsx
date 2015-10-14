@@ -4,7 +4,7 @@ LoginLayout = React.createClass({
     var handleUserPoints = Meteor.subscribe("userPoints");
 
     var pointEntries = UserPoints.find({
-      // nothing
+      username: Meteor.user().services.github.username
     }, {
       sort: {
         createdAt: -1
