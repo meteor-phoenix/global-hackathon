@@ -28,3 +28,4 @@ FlowRouter.route('/:orgName/:repoName', {
   },
   name: "Issues"
 });
+

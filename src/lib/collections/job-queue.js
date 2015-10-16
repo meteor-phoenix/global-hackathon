@@ -1,0 +1,1 @@
+JobQueue = new Mongo.Collection("JobQueue");

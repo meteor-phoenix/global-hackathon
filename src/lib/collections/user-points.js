@@ -17,6 +17,21 @@ UserPoints.attachSchema(
       label: "How did the user get the points?",
       max: 500
     },
+    orgName: {
+      type: String,
+      label: "Organization Name",
+      max:200
+    },
+    repoName: {
+      type: String,
+      label: "Repository Name",
+      max:200
+    },
+    number: {
+      type: String,
+      label: "Github Issue Number",
+      max: 200
+    },
     createdAt: {
       type: Date,
       autoValue: function() {
