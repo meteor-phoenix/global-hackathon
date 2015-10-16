@@ -51,7 +51,18 @@ IssueCardComponent = React.createClass({
       closedBy = <span>Open</span>
       panelClass += " panel-primary";
     } else {
-      closedBy = <span>Closed by <span className="label label-primary">{this.props.issue.closedBy}</span></span>
+      var closerLink = "/" + this.props.issue.closedBy;
+      closedBy = (
+        <span>
+          Closed by 
+          &nbsp;
+          <a href={closerLink}>
+            <span className="label label-primary">
+              {this.props.issue.closedBy}
+            </span>
+          </a>
+        </span>
+      );
       panelClass += " panel-info";
     }
 

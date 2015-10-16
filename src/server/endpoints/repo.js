@@ -29,6 +29,11 @@ Meteor.methods({
       lastPollTimestamp: 0
     });
 
+    createGithubHook(
+        split[0],
+        split[1]
+    );
+
     return true;
   }
 });

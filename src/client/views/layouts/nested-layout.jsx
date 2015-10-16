@@ -6,13 +6,20 @@ NestedLayout = React.createClass({
 
     return {
       listLoading: ! handleIssues.ready() && ! handleRepos.ready(),
-      repos: GithubRepos.find().fetch(),
+      repos: GithubRepos.find({}, {
+        sort: {
+          lastPollTimestamp: -1,
+          createdAt: -1
+        }
+      }).fetch(),
       issues: GithubIssues.find({
         orgName: this.props.orgName,
         repoName: this.props.repoName,
       }, {
         sort: {
-          closedBy: -1
+          closedBy: -1,
+          points: -1,
+          number: -1
         }
       }).fetch()
     };

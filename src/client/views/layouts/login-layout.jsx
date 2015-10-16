@@ -2,23 +2,24 @@ LoginLayout = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     var handleUserPoints = Meteor.subscribe("userPoints");
-
-    var pointEntries = UserPoints.find({
-      // nothing
-    }, {
-      sort: {
-        createdAt: -1
-      }
-    }).fetch();
-
     var points = 0;
 
-    if ( pointEntries.length > 0 ) {
-      points = pointEntries.map(function ( a ) {
-        return a.points;
-      } ).reduce(function ( a, b ) {
-        return a + b;
-      });
+    if ( Meteor.user() ) {
+      var pointEntries = UserPoints.find({
+        username: Meteor.user().services.github.username
+      }, {
+        sort: {
+          createdAt: -1
+        }
+      }).fetch();
+
+      if ( pointEntries.length > 0 ) {
+        points = pointEntries.map(function ( a ) {
+          return a.points;
+        } ).reduce(function ( a, b ) {
+          return a + b;
+        });
+      }
     }
 
     return {
