@@ -1,0 +1,17 @@
+{
+  "public": {
+    "analyticsSettings": {
+      "Google Analytics" : {
+        "trackingId": ""
+      }
+    }
+  },
+  "domain": "http://some.ngrok.io",
+  "github": {
+    "key": "",
+    "secret": ""
+  },
+  "job": {
+    "interval": "1000"
+  }
+}

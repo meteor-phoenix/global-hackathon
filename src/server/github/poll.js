@@ -12,8 +12,8 @@ __githubConnection = new GitHub({
 
 __githubConnection.authenticate({
     type: "oauth",
-    key: Settings.github.key,
-    secret: Settings.github.secret
+    key: Meteor.settings.github.key,
+    secret: Meteor.settings.github.secret
 });
 
 function runJob() {
@@ -52,4 +52,4 @@ function runJob() {
   }
 }
 
-Meteor.setInterval( runJob, Settings.job.interval );
+Meteor.setInterval( runJob, Meteor.settings.job.interval );

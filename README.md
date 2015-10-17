@@ -10,6 +10,8 @@ This project aims to create a package which allows other projects to be gamified
 
 ## Documentation
 
+* Make sure to set up your `settings.json` file in `src`. There is a `settings.example.json` file for you to use as a template.
+
 * Uses a github-api package that uses [node-github](https://github.com/mikedeboer/node-github). [See the full documentation here](http://mikedeboer.github.io/node-github/#issues.prototype.repoIssues). For example JSON results, see [the Github documentation](https://developer.github.com/v3/issues/#list-issues-for-a-repository).
 
-* For github hooks to work, you will need to forward to your local environment using a tool like ngrok. Then run `./ngrok http 3000`. Grab the `.ngrok.io` url and paste it in as the `domain` setting in your `settings.js` file.
+* For github hooks to work, you will need to forward to your local environment using a tool like ngrok. Then run `./ngrok http 3000`. Grab the `.ngrok.io` url and paste it in as the `domain` setting in your `settings.json` file.
