@@ -11,6 +11,10 @@
     "key": "",
     "secret": ""
   },
+  "kadira": { 
+    "appId": "", 
+    "appSecret": "" 
+  },
   "job": {
     "interval": "1000"
   }
