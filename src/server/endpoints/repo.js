@@ -35,20 +35,17 @@ Meteor.methods({
       throw new Meteor.Error("already-exists", "That repo already exists.");
     }
 
-    // Add the repo to the list
-    GithubRepos.insert({
-      orgName: split[0],
-      repoName: split[1],
-      lastPollTimestamp: 0
-    });
-
     var command = new CreateGithubRepoCommand();
 
-    command.handle(
+    var result = command.handle(
         split[0], // Org/User name
         split[1], // Repo name
         token
     );
+
+    if ( result === false ) {
+      throw new Meteor.Error("could-not-add-repo", "The repo does not exist, or it is private.");
+    }
 
     return true;
   }
