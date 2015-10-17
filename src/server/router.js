@@ -7,7 +7,49 @@ HTTP.methods({
       if ( this.requestHeaders['x-github-event'] === 'ping' ) {
         // nothing for now
       } else {
-        handleIssue( this.params, data );  
+        var orgName,
+            repoName,
+            number,
+            title,
+            pullRequest,
+            githubIssue,
+            githubEvent,
+            createGithubIssueCommand,
+            updateGithubIssueCommand;
+
+        orgName     = params.orgName;
+        repoName    = params.repoName;
+        number      = data.issue.number;
+        title       = data.issue.title;
+        pullRequest = data.issue.pull_request;
+
+        createGithubIssueCommand = new CreateGithubIssueCommand();
+        createGithubIssueCommand.handle(
+            orgName,
+            repoName,
+            number,
+            title,
+            pullRequest
+        );
+
+        githubEvent = {
+          event: data.action
+        };
+
+        if ( data.issue.user && data.issue.user.login ) {
+          githubEvent.actor = {
+            login: data.issue.user.login
+          };
+        }
+
+        githubIssue = GithubIssues.findOne( {
+          orgName: orgName,
+          repoName: repoName,
+          number: "" + number
+        } );
+
+        updateGithubIssueCommand = new UpdateGithubIssueCommand();
+        updateGithubIssueCommand.handle(githubIssue, githubEvent);
       }
 
       return '';
