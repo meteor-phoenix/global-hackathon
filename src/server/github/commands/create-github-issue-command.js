@@ -18,7 +18,7 @@ CreateGithubIssueCommand = (function () {
     } );
 
     if ( githubIssue == null ) {
-      GithubIssues.insert( {
+      return GithubIssues.insert( {
         orgName: orgName,
         repoName: repoName,
         closedBy: false,
@@ -28,6 +28,8 @@ CreateGithubIssueCommand = (function () {
         isPullRequest: isPullRequest ? true : false
       } );
     }
+
+    return githubIssue._id;
   };
 
   return {

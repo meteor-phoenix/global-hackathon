@@ -34,12 +34,23 @@ CreateGithubRepoCommand = (function () {
     // can't, then we know the repo is private, and
     // we should fail here.
     try {
+      // Do this once as us
       _issueCommand.handle(
           orgName,
           repoName,
           __githubConnection, /* global github connection */
-          true /* getEvents */
+          false /* getEvents */
       );
+
+      // Now do it authenticated as the user ASYNCRONOUSLY
+      Meteor.setTimeout(function () {
+        _issueCommand.handle(
+            orgName,
+            repoName,
+            _githubConnection,
+            true /* getEvents */
+        );
+      }, 1);
     } catch (e) {
       return false;
     }
