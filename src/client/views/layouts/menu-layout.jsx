@@ -9,7 +9,7 @@ MenuLayout = React.createClass({
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <a className="navbar-brand" href="/">Hook QUest</a>
+          <a className="navbar-brand" href="/">Hook Quest</a>
         </div>
         <div id="navbar" className="navbar-collapse collapse">
           <ul className="nav navbar-nav">
