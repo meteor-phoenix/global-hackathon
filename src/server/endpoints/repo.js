@@ -6,6 +6,19 @@ Meteor.methods({
       throw new Meteor.Error("not-logged-in", "Must be logged in to post a comment.");
     }
 
+    // Get the user's oauth token
+    var user = Meteor.user();
+
+    if ( user == null ) {
+      throw new Meteor.Error("no-user", "You must be logged in.");
+    }
+
+    var token = user.services.github.accessToken;
+
+    if ( token == null ) {
+      throw new Meteor.Error("no-token", "No access token provided?");
+    }
+
     var split = repo.split( '/' );
 
     if ( split.length !== 2 ) {
@@ -29,9 +42,12 @@ Meteor.methods({
       lastPollTimestamp: 0
     });
 
-    createGithubHook(
-        split[0],
-        split[1]
+    var command = new CreateGithubRepoCommand();
+
+    command.handle(
+        split[0], // Org/User name
+        split[1], // Repo name
+        token
     );
 
     return true;

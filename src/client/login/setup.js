@@ -3,6 +3,6 @@
  */
 Accounts.ui.config({
   requestPermissions: {
-    github: ['user', 'public_rep', 'write:repo_hook']
+    github: ['user', 'public_repo', 'write:repo_hook']
   }
 });
