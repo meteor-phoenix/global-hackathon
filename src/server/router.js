@@ -17,8 +17,8 @@ HTTP.methods({
             createGithubIssueCommand,
             updateGithubIssueCommand;
 
-        orgName     = params.orgName;
-        repoName    = params.repoName;
+        orgName     = this.params.orgName;
+        repoName    = this.params.repoName;
         number      = data.issue.number;
         title       = data.issue.title;
         pullRequest = data.issue.pull_request;

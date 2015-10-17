@@ -3,7 +3,10 @@
  * an issue job from the job queue
  */
 IssueJobStrategy = (function (githubConnection) {
-  var _updateGithubIssueCommand = new UpdateGithubIssueCommand();
+  var _getIssueEventsCommand;
+
+  _getIssueEventsCommand    = new GetIssueEventsCommand();
+
   /**
    * Execute this strategy on the given
    * issue job object. Will update its
@@ -18,39 +21,20 @@ IssueJobStrategy = (function (githubConnection) {
     var orgName          = job.orgName;
     var repoName         = job.repoName;
     var number           = job.number;
+    var page             = job.page || 0;
     var lastRanTimestamp = job.lastRanTimestamp;
 
-    // TODO github lists issues in order of history:
-    // earliest first, latest on the LAST page.
+    // TODO refactor this to the get-issue-events-command
+    var page = _getIssueEventsCommand.handle(
+        orgName,
+        repoName,
+        number,
+        githubConnection,
+        page,
+        lastRanTimestamp
+    );
 
-    // Yup, we need to ask for the LAST event on the
-    // LAST page.
-
-    // For now, we will just ask for 100 events and call it good enough
-    var results = githubConnection.issues.getEvents({
-      header : {
-        'If-Modified-Since': lastRanTimestamp
-      },
-      user: orgName,
-      repo: repoName,
-      number: number,
-      per_page: 100
-    });
-
-    var githubIssue = GithubIssues.findOne({
-      orgName: orgName,
-      repoName: repoName,
-      number: "" + number
-    });
-
-    if (githubIssue && results && results.length > 0) {
-      var githubEvent = results[ results.length - 1 ];
-
-      _updateGithubIssueCommand.handle(
-          githubIssue,
-          githubEvent
-      );
-    }
+    // TODO update the job with the given page
   };
 
   return {

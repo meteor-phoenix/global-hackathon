@@ -6,11 +6,11 @@
  * events.
  */
 
-var githubConnection = new GitHub({
+__githubConnection = new GitHub({
   version: "3.0.0"
 });
 
-githubConnection.authenticate({
+__githubConnection.authenticate({
     type: "oauth",
     key: Settings.github.key,
     secret: Settings.github.secret
@@ -30,7 +30,7 @@ function runJob() {
     var jobStrategyFactory,
         jobStrategy;
 
-    jobStrategyFactory = new JobStrategyFactory(githubConnection);
+    jobStrategyFactory = new JobStrategyFactory(__githubConnection);
 
     jobStrategy = jobStrategyFactory.build(job.action);
 

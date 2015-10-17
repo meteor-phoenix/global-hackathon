@@ -21,6 +21,7 @@ GetRepoIssuesCommand = (function () {
   var handle = function (orgName, repoName, githubConnection, getEvents ) {
     getEvents = getEvents || false;
 
+    // TODO repo issues are paginated, just like issue events
     var result = githubConnection.issues.repoIssues({
       user: orgName,
       repo: repoName,

@@ -2,10 +2,6 @@
  * Create a hook to a given Github Repo
  */
 CreateGithubHookCommand = (function () {
-  var _issueCommand;
-
-  _issueCommand = new GetRepoIssuesCommand();
-
   /**
    * Try to create a Github Hook
    *
@@ -65,15 +61,6 @@ CreateGithubHookCommand = (function () {
         repoName: repoName,
         active: true
       });
-
-      // get latest data for the repo using the given
-      // github connection
-      _issueCommand.handle(
-          orgName,
-          repoName,
-          githubConnection,
-          true /* getEvents */
-      );
     }
     
     return ! failed;

@@ -1,11 +1,11 @@
 RepoListComponent = React.createClass({
-  newClick(e) {
-    e.preventDefault();
-    $('#createRepo').modal('show');
+  mixins: [ReactMeteorData],
+  getMeteorData() {
+    return {
+      loggedIn: ( Meteor.userId() ) ? true : false
+    };
   },
-  createClick(e) {
-    e.preventDefault();
-
+  createRepo() {
     var $input = $('#createRepo input[name=createRepoName]');
     var $label = $('#createRepo label[for=createRepoName]');
     var repo = $input.val();
@@ -23,11 +23,25 @@ RepoListComponent = React.createClass({
       }
     });
   },
+  newClick(e) {
+    e.preventDefault();
+    $('#createRepo').modal('show');
+  },
+  createSubmit(e) {
+    e.preventDefault();
+
+    this.createRepo();
+  },
+  createClick(e) {
+    e.preventDefault();
+
+    this.createRepo();
+  },
   render() {
     var addRepoButton = '';
     var addRepoModal  = '';
 
-    if ( Meteor.userId() ) {
+    if ( this.data.loggedIn ) {
       addRepoButton = (
         <button className="pull-right btn btn-primary" onClick={this.newClick}>
           <i className="fa fa-plus"></i>
@@ -43,7 +57,7 @@ RepoListComponent = React.createClass({
                 <h4 className="modal-title" id="createRepoModalLabel">Add a repo</h4>
               </div>
               <div className="modal-body">
-                <form>
+                <form id="createRepoForm" onSubmit={this.createSubmit}>
                   <div className="form-group">
                     <label
                         className="control-label"
