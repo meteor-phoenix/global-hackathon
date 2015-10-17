@@ -35,7 +35,7 @@ accounts-ui
 service-configuration
 check
 cfs:http-methods
-okgrow:analytics
+# okgrow:analytics
 meteorhacks:kadira
 fastclick
 kadira:dochead
