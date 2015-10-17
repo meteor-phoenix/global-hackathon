@@ -2,6 +2,11 @@
 
 This project aims to create a package which allows other projects to be gamified by adding points, awards, and/or levels.
 
+Run using:
+```
+meteor run --settings settings.json 
+```
+
 ## Authors
 
 * William Cobb
