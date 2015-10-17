@@ -52,10 +52,4 @@ function runJob() {
   }
 }
 
-
-/**
- * Run the queue at once a second to say under the
- * Github API limit of 5000 requests an hour, because
- * there are 3600 seconds in an hour
- */
-Meteor.setInterval( runJob, 1000 );
+Meteor.setInterval( runJob, Settings.job.interval );

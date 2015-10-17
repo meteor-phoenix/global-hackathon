@@ -58,6 +58,13 @@ RepoListComponent = React.createClass({
               </div>
               <div className="modal-body">
                 <form id="createRepoForm" onSubmit={this.createSubmit}>
+                  <p>
+                    We currently only support public repos. When you add a repo, it
+                    will be added to the queue.
+                  </p>
+                  <p>
+                    New repos may take a bit of time to populate, please be patient.
+                  </p>
                   <div className="form-group">
                     <label
                         className="control-label"
