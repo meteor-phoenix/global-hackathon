@@ -1,0 +1,19 @@
+.home__hero {
+  background-image: url(https://cdn.rawgit.com/mantaray-ar-side-projects/hook-quest-static/master/images/mountains-michael-moser-dark.jpg);
+  background-position: center;
+  background-size: cover;
+  padding: 20vh 10px;
+}
+
+.home__hero__title,
+.home__hero__subtitle  {
+  text-align: center;
+
+  h1,
+  h3 {
+    background-color: rgba(10, 30, 30, 0.8);
+    color: white;
+    display: inline-block;
+    padding: 10px;
+  }
+}

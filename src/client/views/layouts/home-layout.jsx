@@ -19,13 +19,25 @@ HomeLayout = React.createClass({
       return <AppLoadingComponent />;
     }
 
-    return <div className="container">
-      <div className="row">
-        <div className="col-md-offset-3 col-md-6">
-          <RepoListComponent
-            repos={this.data.repos}/>
+    return (
+      <div>
+        <div className="home__hero">
+          <div className="home__hero__title">
+            <h1>Hook Quest</h1>
+          </div>
+          <div className="home__hero__subtitle">
+            <h3>Close Issues, Get Points, Level Up</h3>
+          </div>
+        </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-offset-3 col-md-6">
+              <RepoListComponent
+                repos={this.data.repos}/>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    );
   }
 });

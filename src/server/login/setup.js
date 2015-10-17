@@ -11,4 +11,20 @@ Meteor.startup(function() {
     },
     { upsert: true }
   );
+
+  /**
+   * Publish everyone's github id
+   *
+   * Careful! DON'T ACCIDENTLY EXPOSE
+   * SECRET PROPERTIES
+   */
+  Meteor.publish(null, function() {
+    return Meteor.users.find({
+      _id: this.userId
+    }, {
+      fields: {
+        'services.github.username': 1
+      }
+    });
+  });
 });
