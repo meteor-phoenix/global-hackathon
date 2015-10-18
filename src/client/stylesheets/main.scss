@@ -4,5 +4,12 @@
 @import '_bootswatch';
 
 body {
-  padding-top: 70px;
+  padding-top: 40px;
 }
+
+footer {
+  margin: 20px 0;
+}
+
+@import 'loading-animations';
+@import 'components/home';

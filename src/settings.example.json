@@ -1,0 +1,21 @@
+{
+  "public": {
+    "analyticsSettings": {
+      "Google Analytics" : {
+        "trackingId": ""
+      }
+    }
+  },
+  "domain": "http://some.ngrok.io",
+  "github": {
+    "key": "",
+    "secret": ""
+  },
+  "kadira": { 
+    "appId": "", 
+    "appSecret": "" 
+  },
+  "job": {
+    "interval": "1000"
+  }
+}

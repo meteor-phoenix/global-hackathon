@@ -9,11 +9,10 @@ MenuLayout = React.createClass({
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <a className="navbar-brand" href="#">GitHub</a>
+          <a className="navbar-brand" href="/">Hook Quest</a>
         </div>
         <div id="navbar" className="navbar-collapse collapse">
           <ul className="nav navbar-nav">
-            <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
           </ul>
           <div className="nav navbar-nav navbar-right">

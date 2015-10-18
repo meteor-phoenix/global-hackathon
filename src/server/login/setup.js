@@ -5,10 +5,26 @@ Meteor.startup(function() {
     { "service": "github" },
     {
       $set: {
-        "clientId": Settings.github.key,
-        "secret": Settings.github.secret
+        "clientId": Meteor.settings.github.key,
+        "secret": Meteor.settings.github.secret
       }
     },
     { upsert: true }
   );
+
+  /**
+   * Publish everyone's github id
+   *
+   * Careful! DON'T ACCIDENTLY EXPOSE
+   * SECRET PROPERTIES
+   */
+  Meteor.publish(null, function() {
+    return Meteor.users.find({
+      _id: this.userId
+    }, {
+      fields: {
+        'services.github.username': 1
+      }
+    });
+  });
 });

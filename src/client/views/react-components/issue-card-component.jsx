@@ -1,7 +1,7 @@
 IssueCardComponent = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
-    var handleUserVotes  = Meteor.subscribe("userVotes");
+    var handleUserVotes = Meteor.subscribe("userVotes");
 
     return {
       listLoading: ! handleUserVotes.ready(),
@@ -14,7 +14,6 @@ IssueCardComponent = React.createClass({
   },
   voteClick( e ) {
     e.preventDefault();
-    // TODO unvote if already voted
     // TODO handle error
 
     if ( this.data.vote ) {
@@ -34,6 +33,10 @@ IssueCardComponent = React.createClass({
     }
   },
   render() {
+    if (this.data.listLoading) {
+      return <AppLoadingComponent noText={true} />;
+    }
+
     var closedBy;
     var panelClass = "panel";
     var voteClass  = "fa fa-circle fa-stack-2x";

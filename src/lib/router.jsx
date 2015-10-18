@@ -7,6 +7,15 @@ FlowRouter.route('/', {
   name: "Home"
 });
 
+FlowRouter.route('/_/test/loading', {
+  action: function(params, queryParams) {
+    ReactLayout.render(MainLayout, {
+      content: <AppLoadingComponent />
+    });
+  },
+  name: "Test Loading"
+});
+
 FlowRouter.route('/:username', {
   action: function(params, queryParams) {
     ReactLayout.render(MainLayout, {

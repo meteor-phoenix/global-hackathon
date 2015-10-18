@@ -23,7 +23,7 @@ CreateGithubHookCommand = (function () {
    */
   var handle = function (orgName, repoName, githubConnection) {
     var failed = true;
-    var url = Settings.domain + '/api/' + orgName + '/' + repoName + '/issues';
+    var url = Meteor.settings.domain + '/api/' + orgName + '/' + repoName + '/issues';
     try {
       githubConnection.repos.createHook({
         user: orgName,

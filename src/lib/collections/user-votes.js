@@ -58,7 +58,7 @@ if ( Meteor.isServer ) {
     'use strict';
 
     if (! this.userId) {
-      return;
+      return this.ready();
     }
 
     var user = Meteor.users.findOne(this.userId);
