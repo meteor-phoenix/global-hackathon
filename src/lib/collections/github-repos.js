@@ -59,6 +59,10 @@ GithubRepos.attachSchema(
       label: "Repository Name",
       max:200
     },
+    language: {
+      type: String,
+      label: "Language"
+    },
     lastPollTimestamp: {
       type: Number,
       label: "Time Events Last Polled" 
