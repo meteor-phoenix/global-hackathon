@@ -48,7 +48,7 @@ SearchLayout = React.createClass({
       <div>
         <div className="search__hero">
           <div className="search__hero__title">
-            <h1>Search for Repos and Issues</h1>
+            <h1>Search for Repos</h1>
           </div>
         </div>
         <div className="search__content container">

@@ -89,10 +89,15 @@ RepoListComponent = React.createClass({
       );
     }
 
+    var heading = 'Active';
+    if ( this.props.noText ) {
+      heading = <span>&nbsp;</span>;
+    }
+
     return <div>
       {addRepoButton}
       {addRepoModal}
-      <h4>Active</h4>
+      <h4>{heading}</h4>
 
       <div className="list-group">
         {this.props.repos.map(function(repo, i){
