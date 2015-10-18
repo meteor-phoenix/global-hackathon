@@ -54,7 +54,7 @@ IssueCardComponent = React.createClass({
       closedBy = <span>Open</span>
       panelClass += " panel-primary";
     } else {
-      var closerLink = "/" + this.props.issue.closedBy;
+      var closerLink = "/g/" + this.props.issue.closedBy;
       closedBy = (
         <span>
           Closed by 

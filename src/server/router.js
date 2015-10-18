@@ -1,4 +1,45 @@
 HTTP.methods({
+  '/api/:orgName/:repoName/badge': {
+    get: function(data) {
+      var orgName, repoName, style, label, color,
+          url, result,
+          repo, totalPoints;
+
+      orgName = this.params.orgName;
+      repoName = this.params.repoName;
+      style = this.query.style || 'flat';
+      label = 'EXP';
+      color = 'blue';
+
+      if ( ['flat', 'plastic', 'flat-square'].indexOf(style) === -1 ) {
+        style = 'flat';
+      }
+
+      repo = GithubRepos.findOne({
+        orgName: orgName,
+        repoName: repoName
+      });
+
+      totalPoints = repo.getTotalPoints();
+
+      url = "https://img.shields.io/badge/";
+      url += label;
+      url += "-";
+      url += totalPoints;
+      url += "-";
+      url += color;
+      url += ".svg?";
+      url += 'style=' + style;
+
+      result = HTTP.get(url)
+
+      this.setStatusCode(result.statusCode);
+      this.setContentType(result.headers['content-type']);
+      // TODO cache control
+
+      return result.content;
+    }
+  },
   '/api/:orgName/:repoName/issues': {
     post: function (data) {
       // TODO ignoring pings for now, but they should be

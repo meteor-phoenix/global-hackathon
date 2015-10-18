@@ -19,6 +19,22 @@ GithubRepo.prototype = {
     });
 
     return issues.count();
+  },
+  getTotalPoints: function () {
+    var points = 0;
+    var issues = GithubIssues.find({
+      orgName: this.orgName,
+      repoName: this.repoName,
+      closedBy: false
+    });
+
+    issues.forEach( function (issue) {
+      // TODO refactor base points constant
+      points += 10;
+      points += issue.points;
+    });
+
+    return points;
   }
 };
 

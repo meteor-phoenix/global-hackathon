@@ -10,7 +10,8 @@ NestedLayout = React.createClass({
         sort: {
           lastPollTimestamp: -1,
           createdAt: -1
-        }
+        },
+        limit: 10
       }).fetch(),
       issues: GithubIssues.find({
         orgName: this.props.orgName,
@@ -37,6 +38,7 @@ NestedLayout = React.createClass({
           </div>
           <div className="col-md-9">
             <IssueListComponent
+              orgName={this.props.orgName}
               repoName={this.props.repoName}
               issues={this.data.issues}/>
           </div>

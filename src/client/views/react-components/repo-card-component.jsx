@@ -1,6 +1,6 @@
 RepoCardComponent = React.createClass({
   render() {
-    var link = "/" + this.props.repo.orgName + "/" + this.props.repo.repoName;
+    var link = "/g/" + this.props.repo.orgName + "/" + this.props.repo.repoName;
 
     return <a
         href={link}
