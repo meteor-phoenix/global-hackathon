@@ -7,7 +7,7 @@ AboutLayout = React.createClass({
             <h1>About Hook Quest</h1>
           </div>
           <div className="about__hero__subtitle">
-            <h3>Turning Open Source contributions into a fun game</h3>
+            <h3>Making bug fixes fun</h3>
           </div>
         </div>
         <div className="about__content container">

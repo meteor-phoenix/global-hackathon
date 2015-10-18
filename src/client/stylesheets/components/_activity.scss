@@ -1,13 +1,13 @@
-.about__hero {
+.activity__hero {
   background-color: #2D2D4D;
   background-image: url(https://cdn.rawgit.com/mantaray-ar-side-projects/hook-quest-static/0.0.4/images/space-blair-fraser-raw-compressed.jpg);
   background-position: center;
   background-size: cover;
-  padding: 10vh 10px;
+  padding: 10px 10px;
 }
 
-.about__hero__title,
-.about__hero__subtitle  {
+.activity__hero__title,
+.activity__hero__subtitle  {
   text-align: center;
 
   h1,
@@ -19,7 +19,7 @@
   }
 }
 
-.about__content {
+.activity__content {
   margin-bottom: 20px;
   margin-top: 20px;
 }

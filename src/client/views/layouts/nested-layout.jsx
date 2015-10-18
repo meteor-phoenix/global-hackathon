@@ -10,7 +10,8 @@ NestedLayout = React.createClass({
         sort: {
           lastPollTimestamp: -1,
           createdAt: -1
-        }
+        },
+        limit: 10
       }).fetch(),
       issues: GithubIssues.find({
         orgName: this.props.orgName,

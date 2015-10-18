@@ -92,7 +92,7 @@ RepoListComponent = React.createClass({
     return <div>
       {addRepoButton}
       {addRepoModal}
-      <h3>Repos</h3>
+      <h4>Active</h4>
 
       <div className="list-group">
         {this.props.repos.map(function(repo, i){
