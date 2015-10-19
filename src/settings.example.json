@@ -4,9 +4,9 @@
       "Google Analytics" : {
         "trackingId": ""
       }
-    }
+    },
+    "domain": "http://some.ngrok.io"
   },
-  "domain": "http://some.ngrok.io",
   "github": {
     "key": "",
     "secret": ""

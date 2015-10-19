@@ -4,6 +4,7 @@
 @import '_bootswatch';
 
 body {
+  font-weight: 300;
   padding-top: 40px;
 }
 
@@ -13,3 +14,7 @@ footer {
 
 @import 'loading-animations';
 @import 'components/home';
+@import 'components/about';
+@import 'components/activity';
+@import 'components/search';
+@import 'components/repo';

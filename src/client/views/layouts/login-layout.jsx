@@ -31,7 +31,7 @@ LoginLayout = React.createClass({
     var experienceBadge = "";
 
     if ( this.data.loggedIn && Meteor.user() ) {
-      var badgeLink = "/" + Meteor.user().services.github.username;
+      var badgeLink = "/g/" + Meteor.user().services.github.username;
       experienceBadge = (
         <a href={badgeLink} className="label label-primary">
           {this.data.points} EXP
