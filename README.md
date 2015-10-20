@@ -1,6 +1,6 @@
 # Hook Quest
 
-[![Hook Quest Experience](http://hookquest.meteor.com/api/mantaray-ar-side-projects/hook-quest/badge "Experience up for grabs")](http://hookquest.meteor.com/g/mantaray-ar-side-projects/hook-quest)
+[![Stellarnauts Experience](http://hookquest.meteor.com/api/mantaray-ar-side-projects/stellarnauts/badge "Experience up for grabs")](http://stellarnauts.meteor.com/g/mantaray-ar-side-projects/stellarnauts)
 
 
 This project aims to create a package which allows other projects to be gamified by adding points, awards, and/or levels.
@@ -36,4 +36,4 @@ The following are needed:
 
 # Deployment
 
-`meteor deploy hookquest.meteor.com --settings settings.prod.json`
+`meteor deploy stellarnauts.meteor.com --settings settings.prod.json`
