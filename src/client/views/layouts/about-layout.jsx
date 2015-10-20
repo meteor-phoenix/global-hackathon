@@ -14,7 +14,7 @@ AboutLayout = React.createClass({
           <div className="row">
             <div className="col-md-6 col-md-offset-3">
               <p>
-                The Hook Queue project started out as a very simple idea
+                The Hook Quest project started out as a very simple idea
                 during the Meteor Phoenix Hackathon 2015:
               </p>
               <blockquote>
