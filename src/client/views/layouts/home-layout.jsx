@@ -23,7 +23,7 @@ HomeLayout = React.createClass({
       <div>
         <div className="home__hero">
           <div className="home__hero__title">
-            <h1>Hook Quest</h1>
+            <h1><TAP label="app_name" /></h1>
           </div>
           <div className="home__hero__subtitle">
             <h3>Close Issues, Get Points, Level Up</h3>
