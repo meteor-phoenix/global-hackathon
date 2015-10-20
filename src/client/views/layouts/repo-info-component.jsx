@@ -29,7 +29,7 @@ RepoInfoComponent = React.createClass({
   },
   render() {
 
-    var badgeMarkdown = "[![Hook Quest Experience](";
+    var badgeMarkdown = "[![" + TAPi18n.__('app_name') + " Experience](";
     badgeMarkdown += this.data.badgeLink;
     badgeMarkdown += " \"Experience up for grabs\")](";
     badgeMarkdown += this.data.linkToRepo;
