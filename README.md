@@ -1,6 +1,6 @@
 # Hook Quest
 
-[![Stellarnauts Experience](http://hookquest.meteor.com/api/mantaray-ar-side-projects/stellarnauts/badge "Experience up for grabs")](http://stellarnauts.meteor.com/g/mantaray-ar-side-projects/stellarnauts)
+[![Stellarnauts Experience](http://stellarnauts.meteor.com/api/mantaray-ar-side-projects/stellarnauts/badge "Experience up for grabs")](http://stellarnauts.meteor.com/g/mantaray-ar-side-projects/stellarnauts)
 
 
 This project aims to create a package which allows other projects to be gamified by adding points, awards, and/or levels.
