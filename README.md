@@ -1,4 +1,4 @@
-# Hook Quest
+# Stellarnauts
 
 [![Stellarnauts Experience](http://stellarnauts.meteor.com/api/mantaray-ar-side-projects/stellarnauts/badge "Experience up for grabs")](http://stellarnauts.meteor.com/g/mantaray-ar-side-projects/stellarnauts)
 
