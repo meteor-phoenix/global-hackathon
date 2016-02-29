@@ -14,12 +14,16 @@ RepoListComponent = React.createClass({
     $input.closest( 'form' ).removeClass( 'has-error' );
     $label.text('');
 
+    var org = repo.split('/')[0];
+    var repoName = repo.split('/')[1];
+
     Meteor.call( 'createRepo', repo, function ( err, msg ) {
       if ( err ) {
         $input.closest( 'form' ).addClass( 'has-error' );
         $label.text( err.reason ); 
       } else {
         $('#createRepo').modal('hide');
+        FlowRouter.go('/g/' + org + '/' + repoName);
       }
     });
   },
