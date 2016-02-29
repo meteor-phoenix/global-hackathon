@@ -66,7 +66,7 @@ CreateGithubRepoCommand = (function () {
       orgName: orgName,
       repoName: repoName,
       language: 'na',
-      lastPollTimestamp: 0
+      lastActivityTimestamp: +new Date()
     };
 
     if ( details ) {

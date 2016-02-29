@@ -40,6 +40,8 @@ GetIssueEventsCommand = (function() {
           githubIssue,
           githubEvent
       );
+
+
     }
 
     // TODO return the next page number if there is one

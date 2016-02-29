@@ -8,7 +8,7 @@ NestedLayout = React.createClass({
       listLoading: ! handleIssues.ready() && ! handleRepos.ready(),
       repos: GithubRepos.find({}, {
         sort: {
-          lastPollTimestamp: -1,
+          lastActivityTimestamp: -1,
           createdAt: -1
         },
         limit: 10
