@@ -97,6 +97,8 @@ IssueCardComponent = React.createClass({
               {this.props.issue.points} Exp
             </div>
             <div className="col-xm-9">
+              <BountyButtonComponent issue={this.props.issue} />
+
               <a href={githubLink} className="btn btn-default" target="blank">
                 View Issue On Github&nbsp;
                 <i className="fa fa-external-link"></i>
