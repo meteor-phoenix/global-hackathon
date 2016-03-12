@@ -1,5 +1,6 @@
 IssueReopenedEventStrategy = (function () {
   var _rollbackPointsCommand = new RollbackPointsCommand();
+  var _updateGithubActivityCommand = new UpdateGithubActivityCommand();
 
   var execute = function (issue, event) {
     _rollbackPointsCommand.handle({
@@ -14,6 +15,8 @@ IssueReopenedEventStrategy = (function () {
         closedBy: false
       }
     } );
+
+    _updateGithubActivityCommand.handle(issue.orgName, issue.repoName);
   }
 
   return {

@@ -1,0 +1,24 @@
+.repo__hero {
+  background-color: #2D2D4D;
+  background-position: center;
+  background-size: cover;
+  padding: 10px 10px;
+}
+
+.repo__hero__title,
+.repo__hero__subtitle  {
+  text-align: center;
+
+  h1,
+  h3 {
+    background-color: rgba(10, 30, 30, 0.8);
+    color: white;
+    display: inline-block;
+    padding: 10px;
+  }
+}
+
+.repo__content {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}

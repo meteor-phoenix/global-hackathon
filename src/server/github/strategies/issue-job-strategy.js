@@ -7,6 +7,7 @@ IssueJobStrategy = (function (githubConnection) {
 
   _getIssueEventsCommand    = new GetIssueEventsCommand();
 
+
   /**
    * Execute this strategy on the given
    * issue job object. Will update its
@@ -24,7 +25,6 @@ IssueJobStrategy = (function (githubConnection) {
     var page             = job.page || 0;
     var lastRanTimestamp = job.lastRanTimestamp;
 
-    // TODO refactor this to the get-issue-events-command
     var page = _getIssueEventsCommand.handle(
         orgName,
         repoName,

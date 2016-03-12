@@ -1,7 +1,6 @@
 IssueListComponent = React.createClass({
   render() {
     return <div>
-      <h1>Issues for {this.props.repoName}</h1>
       <RepoInfoComponent
             orgName={this.props.orgName}
             repoName={this.props.repoName} />

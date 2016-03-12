@@ -1,4 +1,5 @@
 IssueClosedEventStrategy = (function () {
+  var _updateGithubActivityCommand = new UpdateGithubActivityCommand(); 
   var _awardPointsCommand = new AwardPointsCommand();
 
   var execute = function (issue, event) {
@@ -32,6 +33,8 @@ IssueClosedEventStrategy = (function () {
         repoName: issue.repoName,
         number: issue.number
       });
+
+      _updateGithubActivityCommand.handle(issue.orgName, issue.repoName);
     }
   }
 

@@ -1,4 +1,7 @@
-# Global Hackathon
+# Stellarnauts
+
+[![Stellarnauts Experience](http://stellarnauts.meteor.com/api/mantaray-ar-side-projects/stellarnauts/badge "Experience up for grabs")](http://stellarnauts.meteor.com/g/mantaray-ar-side-projects/stellarnauts)
+
 
 This project aims to create a package which allows other projects to be gamified by adding points, awards, and/or levels.
 
@@ -30,3 +33,7 @@ The following are needed:
 * Uses a github-api package that uses [node-github](https://github.com/mikedeboer/node-github). [See the full documentation here](http://mikedeboer.github.io/node-github/#issues.prototype.repoIssues). For example JSON results, see [the Github documentation](https://developer.github.com/v3/issues/#list-issues-for-a-repository).
 
 * For github hooks to work, you will need to forward to your local environment using a tool like ngrok. Then run `./ngrok http 3000`. Grab the `.ngrok.io` url and paste it in as the `domain` setting in your `settings.json` file.
+
+# Deployment
+
+`meteor deploy stellarnauts.meteor.com --settings settings.prod.json`

@@ -4,7 +4,7 @@ AboutLayout = React.createClass({
       <div>
         <div className="about__hero">
           <div className="about__hero__title">
-            <h1>About Hook Quest</h1>
+            <h1>About <TAP label="app_name" /></h1>
           </div>
           <div className="about__hero__subtitle">
             <h3>Making bug fixes fun</h3>
@@ -14,7 +14,7 @@ AboutLayout = React.createClass({
           <div className="row">
             <div className="col-md-6 col-md-offset-3">
               <p>
-                The Hook Queue project started out as a very simple idea
+                The <TAP label="app_name" /> project started out as a very simple idea
                 during the Meteor Phoenix Hackathon 2015:
               </p>
               <blockquote>
@@ -26,7 +26,7 @@ AboutLayout = React.createClass({
                 The hackathon attendees began working away at the core of the
                 application. After an additional two weeks of work, a fully
                 functioning prototype of what would come to be known as 
-                Hook Quest emerged.
+                <TAP label="app_name" /> emerged.
               </p>
               <h3>Technologies</h3>
               <p>

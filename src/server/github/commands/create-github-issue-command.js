@@ -2,6 +2,7 @@
  * Create a Github Issue in the database
  */
 CreateGithubIssueCommand = (function () {
+  var _updateGithubActivityCommand = new UpdateGithubActivityCommand(); 
   /**
    * Will only make an issue if it does not already exist
    *
@@ -18,6 +19,8 @@ CreateGithubIssueCommand = (function () {
     } );
 
     if ( githubIssue == null ) {
+      _updateGithubActivityCommand.handle(orgName, repoName);
+
       return GithubIssues.insert( {
         orgName: orgName,
         repoName: repoName,

@@ -31,11 +31,10 @@ HTTP.methods({
       url += ".svg?";
       url += 'style=' + style;
 
-      result = HTTP.get(url)
+      result = HTTP.get(url);
 
       this.setStatusCode(result.statusCode);
       this.setContentType(result.headers['content-type']);
-      // TODO cache control
 
       return result.content;
     }
@@ -91,6 +90,9 @@ HTTP.methods({
 
         updateGithubIssueCommand = new UpdateGithubIssueCommand();
         updateGithubIssueCommand.handle(githubIssue, githubEvent);
+
+        updateGithubActivityCommand = new UpdateGithubActivityCommand();
+        updateGithubActivityCommand.handle(orgName, repoName);
       }
 
       return '';
